@@ -90,7 +90,7 @@ public class Client implements IClient {
   private final URL baseUrl;
   private final IProfile profile;
   private final SimpleCredentials cred;
-  
+
   private Capabilities capabilites;
 
   /**
@@ -107,16 +107,16 @@ public class Client implements IClient {
     this.profile = profile;
     this.cred = cred;
   }
-  
+
   @Override
   public IRecords findRecords(int start, int max, Date from, Date to) throws Exception {
     return findRecords(start, max, from, to, null);
   }
 
   @Override
-  public IRecords findRecords(int start, int max, Date from, Date to, String searchText) throws Exception {
+  public IRecords findRecords(int start, int max, Date from, Date to, String searchText, String SearchIds) throws Exception {
     LOG.debug(String.format("Executing findRecords(start=%d,max=%d)", start, max));
-    
+
     loadCapabilities();
 
     Criteria crt = new Criteria();
@@ -125,8 +125,9 @@ public class Client implements IClient {
     crt.setFromDate(from);
     crt.setToDate(to);
     crt.setSearchText(StringUtils.trimToNull(searchText));
+    crt.setSearchIds(StringUtils.trimToNull(searchIds));
     String requestBody = createGetRecordsRequest(crt);
-    
+
     HttpPost post = createRecordsPostRequest(capabilites.get_getRecordsPostURL(), requestBody);
 
     HttpClientContext context = cred!=null && !cred.isEmpty()? createHttpClientContext(baseUrl, cred): null;
@@ -151,7 +152,7 @@ public class Client implements IClient {
   @Override
   public String readMetadata(String id) throws Exception {
     LOG.debug(String.format("Executing readMetadata(id=%s)", id));
-    
+
     loadCapabilities();
 
     String getRecordByIdUrl = createGetMetadataByIdUrl(capabilites.get_getRecordByIDGetURL(), URLEncoder.encode(id, "UTF-8"));
@@ -166,7 +167,7 @@ public class Client implements IClient {
       if (CONFIG_FOLDER_PATH.equals(profile.getMetadataxslt())) {
         return response;
       }
-    
+
       // create transformer
       Templates template = TemplatesManager.getInstance().getTemplate(profile.getMetadataxslt());
       Transformer transformer = template.newTransformer();
@@ -201,7 +202,7 @@ public class Client implements IClient {
             trFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
             trFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
             trFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
-      
+
             Transformer tr = trFactory.newTransformer();
             tr.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
             tr.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -316,7 +317,7 @@ public class Client implements IClient {
     // perform transformation
     StringWriter writer = new StringWriter();
     transformer.transform(new StreamSource(contentStream), new StreamResult(writer));
-    
+
     LOG.trace(String.format("Received records:\n%s", writer.toString()));
 
     try (ByteArrayInputStream transformedContentStream = new ByteArrayInputStream(writer.toString().getBytes("UTF-8"))) {
@@ -453,7 +454,7 @@ public class Client implements IClient {
       return null;
     }
   }
-  
+
   /**
    * Formats ISO date.
    * @param date date to format
@@ -463,7 +464,7 @@ public class Client implements IClient {
     ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
     return DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(zonedDateTime);
   }
-  
+
   private HttpPost createRecordsPostRequest(String url, String requestBody) {
     HttpPost post = new HttpPost(url);
     post.setConfig(DEFAULT_REQUEST_CONFIG);
@@ -471,7 +472,7 @@ public class Client implements IClient {
     post.setEntity(new StringEntity(requestBody, ContentType.TEXT_XML));
     return post;
   }
-  
+
   private IRecords readRecordsFromStream(InputStream inputStream) throws Exception {
     String response = IOUtils.toString(inputStream, "UTF-8");
     try (ByteArrayInputStream contentInputStream = new ByteArrayInputStream(response.getBytes("UTF-8"));) {
@@ -480,7 +481,7 @@ public class Client implements IClient {
       return records;
     }
   }
-  
+
   @Override
   public String toString() {
     return String.format("CSW :: URL: %s [%s]", baseUrl, profile.getId());

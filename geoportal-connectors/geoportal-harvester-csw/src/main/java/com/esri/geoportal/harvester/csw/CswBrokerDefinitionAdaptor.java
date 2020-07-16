@@ -69,6 +69,7 @@ public class CswBrokerDefinitionAdaptor extends BrokerDefinitionAdaptor {
         throw new InvalidDefinitionException(String.format("Invalid %s: %s", P_PROFILE_ID, get(P_PROFILE_ID)));
       }
       searchText = get(P_SEARCH_TEXT);
+      searchIds = get(P_SEARCH_IDS);
     }
   }
 
@@ -77,6 +78,7 @@ public class CswBrokerDefinitionAdaptor extends BrokerDefinitionAdaptor {
     consume(params,P_HOST_URL);
     consume(params,P_PROFILE_ID);
     consume(params,P_SEARCH_TEXT);
+    consume(params,P_SEARCH_IDS);
     credAdaptor.override(params);
     botsAdaptor.override(params);
   }
@@ -129,11 +131,20 @@ public class CswBrokerDefinitionAdaptor extends BrokerDefinitionAdaptor {
 
   /**
    * Sets search text.
-   * @param searchText search text 
+   * @param searchText search text
    */
   public void setSearchText(String searchText) {
     this.searchText = searchText;
     set(P_SEARCH_TEXT, searchText);
+  }
+
+  /**
+   * Sets search ids.
+   * @param searchIds search Ids
+   */
+  public void setSearchIds(String searchIds) {
+    this.searchIds = searchIds;
+    set(P_SEARCH_IDS, searchIds);
   }
 
   /**
@@ -146,7 +157,7 @@ public class CswBrokerDefinitionAdaptor extends BrokerDefinitionAdaptor {
 
   /**
    * Sets bots config.
-   * @param botsConfig bots config 
+   * @param botsConfig bots config
    */
   public void setBotsConfig(BotsConfig botsConfig) {
     botsAdaptor.setBotsConfig(botsConfig);

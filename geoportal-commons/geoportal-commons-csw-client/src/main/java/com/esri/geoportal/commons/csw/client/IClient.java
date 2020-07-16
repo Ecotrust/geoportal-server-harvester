@@ -31,7 +31,7 @@ public interface IClient {
    * @throws Exception if finding records fails
    */
   IRecords findRecords(int start, int max, Date from, Date to) throws Exception;
-  
+
   /**
    * Finds all records.
    * @param start start record
@@ -39,13 +39,14 @@ public interface IClient {
    * @param from optional from date
    * @param to optional to date
    * @param searchText search text
+   * @param searchIds search IDs
    * @return records
    * @throws Exception if finding records fails
    */
-  default IRecords findRecords(int start, int max, Date from, Date to, String searchText) throws Exception {
+  default IRecords findRecords(int start, int max, Date from, Date to, String searchText, String searchIds) throws Exception {
     return findRecords(start, max, from, to);
   }
-  
+
   /**
    * Reads metadata.
    * @param id id of the record

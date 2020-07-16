@@ -70,6 +70,7 @@ public class CswConnector implements InputConnector<InputBroker> {
       }
     });
     arguments.add(new UITemplate.StringArgument(P_SEARCH_TEXT, bundle.getString("csw.search.text"), false));
+    arguments.add(new UITemplate.StringArgument(P_SEARCH_IDS, bundle.getString("csw.search.ids"), false));
     return new UITemplate(getType(), bundle.getString("csw"), arguments);
   }
 
