@@ -27,6 +27,7 @@ public class Criteria implements ICriteria {
   private int startPosition;
   private int maxRecords;
   private String searchText;
+  private String searchIds;
   private Envelope envelope;
   private Operator.Type operation;
   private boolean liveDataAndMapsOnly;
@@ -40,7 +41,7 @@ public class Criteria implements ICriteria {
 
   /**
    * Sets start position.
-   * @param startPosition start position 
+   * @param startPosition start position
    */
   public void setStartPosition(int startPosition) {
     this.startPosition = startPosition;
@@ -53,7 +54,7 @@ public class Criteria implements ICriteria {
 
   /**
    * Sets max records.
-   * @param maxRecords max records 
+   * @param maxRecords max records
    */
   public void setMaxRecords(int maxRecords) {
     this.maxRecords = maxRecords;
@@ -70,6 +71,19 @@ public class Criteria implements ICriteria {
    */
   public void setSearchText(String searchText) {
     this.searchText = searchText;
+  }
+
+  @Override
+  public String getSearchIds() {
+    return searchIds;
+  }
+
+  /**
+   * Sets search IDs.
+   * @param searchIds search IDs
+   */
+  public void setSearchIds(String searchIds) {
+    this.searchIds = searchIds;
   }
 
   @Override
@@ -131,7 +145,7 @@ public class Criteria implements ICriteria {
 
   /**
    * Sets to date.
-   * @param toDate to date 
+   * @param toDate to date
    */
   public void setToDate(Date toDate) {
     this.toDate = toDate;

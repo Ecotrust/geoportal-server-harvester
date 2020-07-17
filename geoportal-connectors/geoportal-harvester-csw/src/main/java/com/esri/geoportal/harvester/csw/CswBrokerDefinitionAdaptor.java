@@ -41,6 +41,7 @@ public class CswBrokerDefinitionAdaptor extends BrokerDefinitionAdaptor {
   private URL hostUrl;
   private IProfile profile;
   private String searchText;
+  private String searchIds;
 
   /**
    * Creates instance of the adaptor.
