@@ -15,87 +15,141 @@
  limitations under the License.
 -->
 <!-- See also GptXslSearchProfiles.xml -->
-<CSWProfiles> 
-    <!--  OGCCORE ESRI GPT --> 
+<CSWProfiles>
+    <!--  OGCCORE ESRI GPT -->
     <Profile>
-        <ID>urn:ogc:CSW:2.0.2:HTTP:OGCCORE:ESRI:GPT</ID> 
-        <Name>ArcGIS Server Geoportal Extension (GPT)</Name> 
-        <CswNamespace>http://www.opengis.net/cat/csw/2.0.2</CswNamespace> 
-        <Description /> 
+        <ID>urn:ogc:CSW:2.0.2:HTTP:OGCCORE:ESRI:GPT</ID>
+        <Name>ArcGIS Server Geoportal Extension (GPT)</Name>
+        <CswNamespace>http://www.opengis.net/cat/csw/2.0.2</CswNamespace>
+        <Description />
        <GetRecords>
-          
+
          <XSLTransformations>
           <Request expectedGptXmlOutput="FULL_NATIVE_GPTXML">
             CSW_2.0.2_OGCCORE_ESRI_GPT_GetRecords_Request.xslt
-          </Request> 
-          <Response>CSW_2.0.2_OGCCORE_ESRI_GPT_GetRecords_Response.xslt</Response> 
+          </Request>
+          <Response>CSW_2.0.2_OGCCORE_ESRI_GPT_GetRecords_Response.xslt</Response>
           </XSLTransformations>
         </GetRecords>
        <GetRecordByID>
          <RequestKVPs>
-         <![CDATA[service=CSW&request=GetRecordById&version=2.0.2&ElementSetName=full]]> 
+         <![CDATA[service=CSW&request=GetRecordById&version=2.0.2&ElementSetName=full]]>
           </RequestKVPs>
          <XSLTransformations>
-          <Response>CSW_2.0.2_OGCCORE_ESRI_GPT_GetRecordByID_Response.xslt</Response> 
+          <Response>CSW_2.0.2_OGCCORE_ESRI_GPT_GetRecordByID_Response.xslt</Response>
           </XSLTransformations>
         </GetRecordByID>
-        <SupportSpatialQuery>True</SupportSpatialQuery> 
-        <SupportContentTypeQuery>True</SupportContentTypeQuery> 
-        <SupportSpatialBoundary>True</SupportSpatialBoundary> 
-     </Profile>
-     
-    <!--  OGCISO ESRI GPT Version 10--> 
-    <Profile>
-        <ID>urn:ogc:CSW:2.0.2:HTTP:OGCISO:ESRI:GPT</ID> 
-        <Name>ArcGIS Server Geoportal Extension (version 10) CSW ISO AP</Name> 
-        <CswNamespace>http://www.opengis.net/cat/csw/2.0.2</CswNamespace> 
-        <Description /> 
-       <GetRecords>
-         <XSLTransformations>
-          <Request>CSW_2.0.2_OGCISOAP_ESRI_GPT10_GetRecords_Request.xslt</Request> 
-          <Response>CSW_2.0.2_OGCISOAP_ESRI_GPT10_GetRecords_Response.xslt</Response> 
-          </XSLTransformations>
-        </GetRecords>
-       <GetRecordByID>
-         <RequestKVPs>
-         <![CDATA[service=CSW&request=GetRecordById&version=2.0.2&ElementSetName=full&outputSchema=http%3A//www.isotc211.org/2005/gmd]]> 
-          </RequestKVPs>
-         <XSLTransformations>
-          <Response>CSW_2.0.2_OGCISOAP_ESRI_GPT10_GetRecordById_Response.xslt</Response> 
-          </XSLTransformations>
-        </GetRecordByID>
-        <SupportSpatialQuery>True</SupportSpatialQuery> 
-        <SupportContentTypeQuery>True</SupportContentTypeQuery> 
-        <SupportSpatialBoundary>True</SupportSpatialBoundary> 
+        <SupportSpatialQuery>True</SupportSpatialQuery>
+        <SupportContentTypeQuery>True</SupportContentTypeQuery>
+        <SupportSpatialBoundary>True</SupportSpatialBoundary>
      </Profile>
 
-          
-     
-     <!--  OGCCORE ESRI ArcIMS 9.3 --> 
+     <!--  OGCCORE ESRI GPT for WCODP (WCGA RDF) -->
      <Profile>
-        <ID>urn:ogc:CSW:2.0.2:HTTP:OGCCORE:ESRI:ArcIMS:9.3</ID> 
-        <Name>ArcIMS 9.3 CSW 2.0.2 OGCCORE</Name> 
-        <CswNamespace>http://www.opengis.net/cat/csw/2.0.2</CswNamespace> 
-        <Description /> 
+         <ID>urn:ogc:CSW:2.0.2:HTTP:OGCCORE:WCGA_RDF:GPT</ID>
+         <Name>WCGA RDF ESRI Geoportal (GPT)</Name>
+         <CswNamespace>http://www.opengis.net/cat/csw/2.0.2</CswNamespace>
+         <Description />
+        <GetRecords>
+          <XSLTransformations>
+           <Request expectedGptXmlOutput="FULL_NATIVE_GPTXML">
+             WCGA_RDF_GPT_GetRecords_Request.xslt
+           </Request>
+           <Response>WCGA_RDF_GPT_GetRecords_Response.xslt</Response>
+           </XSLTransformations>
+         </GetRecords>
+        <GetRecordByID>
+          <RequestKVPs>
+          <![CDATA[service=CSW&request=GetRecordById&version=2.0.2&ElementSetName=full]]>
+           </RequestKVPs>
+          <XSLTransformations>
+           <Response>WCGA_RDF_GPT_GetRecordByID_Response.xslt</Response>
+           </XSLTransformations>
+         </GetRecordByID>
+         <SupportSpatialQuery>True</SupportSpatialQuery>
+         <SupportContentTypeQuery>True</SupportContentTypeQuery>
+         <SupportSpatialBoundary>True</SupportSpatialBoundary>
+      </Profile>
+
+      <!--  OGCCORE ESRI GPT With Attempted Cherry Picking -->
+      <Profile>
+          <ID>urn:ogc:CSW:2.0.2:HTTP:OGCCORE:WCGA_RDF_CHERRY:GPT</ID>
+          <Name>CHERRY PICKING ESRI Geoportal (GPT)</Name>
+          <CswNamespace>http://www.opengis.net/cat/csw/2.0.2</CswNamespace>
+          <Description />
+         <GetRecords>
+           <XSLTransformations>
+            <Request expectedGptXmlOutput="FULL_NATIVE_GPTXML">
+              GPT_CHERRYPICK_GetRecords_Request.xslt
+            </Request>
+            <Response>GPT_CHERRYPICK_GetRecords_Response.xslt</Response>
+            </XSLTransformations>
+          </GetRecords>
+         <GetRecordByID>
+           <RequestKVPs>
+           <![CDATA[service=CSW&request=GetRecordById&version=2.0.2&ElementSetName=full]]>
+            </RequestKVPs>
+           <XSLTransformations>
+            <Response>GPT_CHERRYPICK_GetRecordByID_Response.xslt</Response>
+            </XSLTransformations>
+          </GetRecordByID>
+          <SupportSpatialQuery>True</SupportSpatialQuery>
+          <SupportContentTypeQuery>True</SupportContentTypeQuery>
+          <SupportSpatialBoundary>True</SupportSpatialBoundary>
+       </Profile>
+
+     <!--  OGCISO ESRI GPT Version 10-->
+    <Profile>
+        <ID>urn:ogc:CSW:2.0.2:HTTP:OGCISO:ESRI:GPT</ID>
+        <Name>ArcGIS Server Geoportal Extension (version 10) CSW ISO AP</Name>
+        <CswNamespace>http://www.opengis.net/cat/csw/2.0.2</CswNamespace>
+        <Description />
        <GetRecords>
          <XSLTransformations>
-          <Request>CSW_2.0.2_OGCCORE_ESRI_9.3_GetRecords_Request.xslt</Request> 
-          <Response>CSW_2.0.2_OGCCORE_ESRI_9.3_GetRecords_Response.xslt</Response> 
+          <Request>CSW_2.0.2_OGCISOAP_ESRI_GPT10_GetRecords_Request.xslt</Request>
+          <Response>CSW_2.0.2_OGCISOAP_ESRI_GPT10_GetRecords_Response.xslt</Response>
           </XSLTransformations>
         </GetRecords>
        <GetRecordByID>
          <RequestKVPs>
-         <![CDATA[service=CSW&request=GetRecordById&version=2.0.2&ElementSetName=full]]> 
+         <![CDATA[service=CSW&request=GetRecordById&version=2.0.2&ElementSetName=full&outputSchema=http%3A//www.isotc211.org/2005/gmd]]>
           </RequestKVPs>
          <XSLTransformations>
-          <Response>CSW_2.0.2_OGCCORE_ESRI_9.3_GetRecordByID_Response.xslt</Response> 
+          <Response>CSW_2.0.2_OGCISOAP_ESRI_GPT10_GetRecordById_Response.xslt</Response>
           </XSLTransformations>
         </GetRecordByID>
-        <SupportSpatialQuery>True</SupportSpatialQuery> 
-        <SupportContentTypeQuery>True</SupportContentTypeQuery> 
-        <SupportSpatialBoundary>True</SupportSpatialBoundary> 
+        <SupportSpatialQuery>True</SupportSpatialQuery>
+        <SupportContentTypeQuery>True</SupportContentTypeQuery>
+        <SupportSpatialBoundary>True</SupportSpatialBoundary>
+     </Profile>
+
+
+
+     <!--  OGCCORE ESRI ArcIMS 9.3 -->
+     <Profile>
+        <ID>urn:ogc:CSW:2.0.2:HTTP:OGCCORE:ESRI:ArcIMS:9.3</ID>
+        <Name>ArcIMS 9.3 CSW 2.0.2 OGCCORE</Name>
+        <CswNamespace>http://www.opengis.net/cat/csw/2.0.2</CswNamespace>
+        <Description />
+       <GetRecords>
+         <XSLTransformations>
+          <Request>CSW_2.0.2_OGCCORE_ESRI_9.3_GetRecords_Request.xslt</Request>
+          <Response>CSW_2.0.2_OGCCORE_ESRI_9.3_GetRecords_Response.xslt</Response>
+          </XSLTransformations>
+        </GetRecords>
+       <GetRecordByID>
+         <RequestKVPs>
+         <![CDATA[service=CSW&request=GetRecordById&version=2.0.2&ElementSetName=full]]>
+          </RequestKVPs>
+         <XSLTransformations>
+          <Response>CSW_2.0.2_OGCCORE_ESRI_9.3_GetRecordByID_Response.xslt</Response>
+          </XSLTransformations>
+        </GetRecordByID>
+        <SupportSpatialQuery>True</SupportSpatialQuery>
+        <SupportContentTypeQuery>True</SupportContentTypeQuery>
+        <SupportSpatialBoundary>True</SupportSpatialBoundary>
     </Profile>
-    
+
     <!-- ebRIM ESRI ArcIMS 9.2 -->
     <Profile>
         <ID>urn:ogc:CSW:2.0.1:HTTP:ebRIM:ESRI:ArcIMS:9.2</ID>
@@ -117,7 +171,7 @@
         <SupportContentTypeQuery>False</SupportContentTypeQuery>
          <SupportSpatialBoundary>False</SupportSpatialBoundary>
     </Profile>
-    
+
     <!-- OGCCORE 2.0.0 ESRI ArcIMS 9.2 pre-sp2 -->
     <Profile>
         <ID>urn:ogc:CSW:2.0.0:HTTP:OGCCORE:ESRI:ArcIMS:9.2</ID>
@@ -137,9 +191,9 @@
         </GetRecordByID>
         <SupportSpatialQuery>True</SupportSpatialQuery>
         <SupportContentTypeQuery>False</SupportContentTypeQuery>
-        <SupportSpatialBoundary>True</SupportSpatialBoundary>    
+        <SupportSpatialBoundary>True</SupportSpatialBoundary>
     </Profile>
-    
+
     <!-- OGCCORE 2.0.0 ESRI ArcIMS 9.2 post-sp2-->
     <Profile>
         <ID>urn:ogc:CSW:2.0.0:HTTP:OGCCORE:ESRI:ArcIMS:9.2:SP2</ID>
@@ -159,9 +213,9 @@
         </GetRecordByID>
         <SupportSpatialQuery>True</SupportSpatialQuery>
         <SupportContentTypeQuery>False</SupportContentTypeQuery>
-        <SupportSpatialBoundary>True</SupportSpatialBoundary>    
+        <SupportSpatialBoundary>True</SupportSpatialBoundary>
     </Profile>
-    
+
 
     <!-- OGCCORE 2.0.1 ESRI ArcIMS 9.2 pre-sp2-->
     <Profile>
@@ -182,9 +236,9 @@
         </GetRecordByID>
         <SupportSpatialQuery>True</SupportSpatialQuery>
         <SupportContentTypeQuery>True</SupportContentTypeQuery>
-        <SupportSpatialBoundary>True</SupportSpatialBoundary>    
+        <SupportSpatialBoundary>True</SupportSpatialBoundary>
     </Profile>
-    
+
         <!-- OGCCORE 2.0.1 ESRI ArcIMS 9.2 post-sp2-->
     <Profile>
         <ID>urn:ogc:CSW:2.0.1:HTTP:OGCCORE:ESRI:ArcIMS:9.2:SP2</ID>
@@ -204,9 +258,9 @@
         </GetRecordByID>
         <SupportSpatialQuery>True</SupportSpatialQuery>
         <SupportContentTypeQuery>True</SupportContentTypeQuery>
-        <SupportSpatialBoundary>True</SupportSpatialBoundary>    
+        <SupportSpatialBoundary>True</SupportSpatialBoundary>
     </Profile>
-    
+
      <!-- OGCCORE ESRI ArcIMS 9.1 -->
     <Profile>
         <ID>urn:ogc:CSW:2.0.0:HTTP:OGCCORE:ESRI:ArcIMS:9.1</ID>
@@ -232,9 +286,9 @@
         <SupportContentTypeQuery>True</SupportContentTypeQuery>
          <SupportSpatialBoundary>True</SupportSpatialBoundary>
     </Profile>
-    
-     
-      
+
+
+
     <!-- ebRIM IONIC -->
     <Profile>
         <ID>urn:ogc:CSW:2.0.0:HTTP:ebRIM:IONIC</ID>
@@ -257,7 +311,7 @@
         <SupportContentTypeQuery>False</SupportContentTypeQuery>
          <SupportSpatialBoundary>False</SupportSpatialBoundary>
     </Profile>
-    
+
 
     <!-- OGCCORE COMPUSULT -->
     <Profile>
@@ -280,13 +334,13 @@
         <SupportContentTypeQuery>False</SupportContentTypeQuery>
          <SupportSpatialBoundary>False</SupportSpatialBoundary>
     </Profile>
-    
+
     <!-- APISO NASA -->
     <Profile>
         <ID>urn:ogc:CSW:2.0.2:HTTP:APISO:NASA</ID>
         <Name>NASA CSW 2.0.2 APISO</Name>
         <CswNamespace>http://www.opengis.net/cat/csw/2.0.2</CswNamespace>
-        <Description></Description>        
+        <Description></Description>
         <GetRecords>
             <XSLTransformations>
                 <Request>CSW_2.0.2_APISO_NASA_GetRecords_Request.xslt</Request>
@@ -304,13 +358,13 @@
          <SupportSpatialBoundary>False</SupportSpatialBoundary>
     </Profile>
 
-   
+
     <!-- OGCCORE EXCAT -->
     <Profile>
         <ID>urn:ogc:CSW:2.0.2:HTTP:OGCCORE:EXCAT</ID>
         <Name>EXCAT CSW 2.0.2 OGCCORE</Name>
         <CswNamespace>http://www.opengis.net/cat/csw</CswNamespace>
-        <Description></Description>        
+        <Description></Description>
         <GetRecords>
             <XSLTransformations>
                 <Request>CSW_2.0.2_OGCCORE_EXCAT_GetRecords_Request.xslt</Request>
@@ -329,13 +383,13 @@
     </Profile>
 
 
-   
+
  <!-- APISO terra catalog -->
     <Profile>
         <ID>urn:ogc:CSW:2.0.2:HTTP:APISO:terracatalog</ID>
         <Name>terra catalog CSW 2.0.2 AP ISO</Name>
         <CswNamespace>http://www.opengis.net/cat/csw/2.0.2</CswNamespace>
-        <Description></Description>        
+        <Description></Description>
         <GetRecords>
             <XSLTransformations>
                 <Request>CSW_2.0.2_APISO_terracatalog_GetRecords_Request.xslt</Request>
@@ -354,13 +408,13 @@
     </Profile>
 
 
-   
+
     <!-- ebRIM GeoNetwork -->
     <Profile>
         <ID>urn:ogc:CSW:2.0.1:HTTP:EBRIM:GeoNetwork</ID>
         <Name>GeoNetwork CSW 2.0.1 EBRIM</Name>
         <CswNamespace>http://www.opengis.net/cat/csw</CswNamespace>
-        <Description></Description>        
+        <Description></Description>
         <GetRecords>
             <XSLTransformations>
                 <Request>CSW_2.0.1_EBRIM_GeoNetwork_GetRecords_Request.xslt</Request>
@@ -377,7 +431,7 @@
         <SupportContentTypeQuery>False</SupportContentTypeQuery>
         <SupportSpatialBoundary>False</SupportSpatialBoundary>
     </Profile>
-      
+
         <!-- Geonetwork APISO -->
                <!-- APISO 2.0.2 GeoNetwork -->
         <Profile>
@@ -399,10 +453,34 @@
                 </GetRecordByID>
                 <SupportSpatialQuery>True</SupportSpatialQuery>
                 <SupportContentTypeQuery>False</SupportContentTypeQuery>
-                <SupportSpatialBoundary>True</SupportSpatialBoundary>    
+                <SupportSpatialBoundary>True</SupportSpatialBoundary>
        </Profile>
-	
-				<!-- SRU CSW 2.0.2 Gateway to Z39.50 -->
+
+       <!-- WCODP (WCGA RDF) Geonetwork APISO -->
+              <!-- APISO 2.0.2 GeoNetwork -->
+       <Profile>
+               <ID>urn:ogc:CSW:2.0.2:HTTP:APISO:WCGA_RDF:GeoNetwork</ID>
+               <Name>WCGA RDF GeoNetwork APISO</Name>
+               <Description></Description>
+                       <CswNamespace>http://www.opengis.net/cat/csw/2.0.2</CswNamespace>
+               <GetRecords>
+                   <XSLTransformations>
+                       <Request>WCGA_RDF_GeoNetwork_GetRecords_Request.xslt</Request>
+                       <Response>WCGA_RDF_GeoNetwork_GetRecords_Response.xslt</Response>
+                   </XSLTransformations>
+               </GetRecords>
+               <GetRecordByID>
+                   <RequestKVPs><![CDATA[service=CSW&request=GetRecordById&version=2.0.2&ElementSetName=full&OutputSchema=csw:IsoRecord]]></RequestKVPs>
+               <XSLTransformations>
+                   <Response>WCGA_RDF_GeoNetwork_GetRecordByID_Response.xslt</Response>
+               </XSLTransformations>
+               </GetRecordByID>
+               <SupportSpatialQuery>True</SupportSpatialQuery>
+               <SupportContentTypeQuery>False</SupportContentTypeQuery>
+               <SupportSpatialBoundary>True</SupportSpatialBoundary>
+      </Profile>
+
+       <!-- SRU CSW 2.0.2 Gateway to Z39.50 -->
         <Profile>
         	<ID>urn:ogc:CSW:2.0.2:HTTP:OGCCORE:SRU</ID>
         	<Name>SRU CSW 2.0.2 Gateway to Z39.50</Name>
@@ -432,7 +510,7 @@
         	<SupportContentTypeQuery>False</SupportContentTypeQuery>
         	<SupportSpatialBoundary>False</SupportSpatialBoundary>
         </Profile>
-        
+
         <!-- OGCCORE 2.0.1 GeoNetwork -->
 	    <Profile>
 	        <ID>urn:ogc:CSW:2.0.1:HTTP:OGCCORE:GeoNetwork</ID>
@@ -452,15 +530,15 @@
 	        </GetRecordByID>
 	        <SupportSpatialQuery>True</SupportSpatialQuery>
 	        <SupportContentTypeQuery>True</SupportContentTypeQuery>
-	        <SupportSpatialBoundary>True</SupportSpatialBoundary>    
+	        <SupportSpatialBoundary>True</SupportSpatialBoundary>
     </Profile>
-    
+
    <!-- ebRIM OWS-6 -->
    <Profile>
         <ID>urn:ogc:CSW:2.0.2:HTTP:ebRIM:OWS6</ID>
         <Name>OWS-7 CSW 2.0.2 ebRIM</Name>
         <CswNamespace>http://www.opengis.net/cat/csw/2.0.2</CswNamespace>
-        <Description></Description>        
+        <Description></Description>
         <GetRecords>
             <XSLTransformations>
                 <Request>CSW_2.0.2_EBRIM_OWS6_GetRecords_Request.xslt</Request>
@@ -468,7 +546,7 @@
             </XSLTransformations>
         </GetRecords>
         <GetRecordByID>
-            <RequestKVPs><![CDATA[request=GetRecordById&service=CSW-ebRIM&elementSetName=full&version=2.0.2&outputSchema=urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0]]></RequestKVPs>                  
+            <RequestKVPs><![CDATA[request=GetRecordById&service=CSW-ebRIM&elementSetName=full&version=2.0.2&outputSchema=urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0]]></RequestKVPs>
 	<XSLTransformations>
 		<Response>CSW_2.0.2_EBRIM_OWS6_GetRecordByID_Response.xslt</Response>
 	</XSLTransformations>
@@ -477,14 +555,14 @@
          <SupportContentTypeQuery>False</SupportContentTypeQuery>
          <SupportSpatialBoundary>False</SupportSpatialBoundary>
    </Profile>
-         
-     <!--  CSW OGCCORE FEMA --> 
+
+     <!--  CSW OGCCORE FEMA -->
      <Profile>
 	    <ID>CSW.OGCCORE.FEMA</ID>
 	    <Name>CSW.OGCCORE.FEMA</Name>
 	    <CswNamespace>http://www.opengis.net/cat/csw</CswNamespace>
 	    <Description>CSW OGCCORE FEMA profile</Description>
-	    <!-- same as CSW.CORE.ESRI profile -->	            
+	    <!-- same as CSW.CORE.ESRI profile -->
 	    <GetRecords>
 	      <XSLTransformations>
 	        <Request>CSW_CORE_ESRI_GetRecords_Request.xslt</Request>
@@ -572,4 +650,51 @@
         <SupportContentTypeQuery>False</SupportContentTypeQuery>
         <SupportSpatialBoundary>False</SupportSpatialBoundary>
     </Profile>
+
+          <!-- WCODP Data.gov profile of pycsw by dc:identifier-->
+    <Profile>
+          <ID>urn:ogc:CSW:2.0.2:HTTP:APISO:PYCSW:CUSTOM</ID>
+          <Name>pycsw - harvest by dc:identifiers</Name>
+          <CswNamespace>http://www.opengis.net/cat/csw/2.0.2</CswNamespace>
+          <Description/>
+          <GetRecords>
+              <XSLTransformations>
+                  <Request>CSW_2.0.2_APISO_pyCSW_custom_GetRecords_Request.xslt</Request>
+                  <Response>CSW_2.0.2_APISO_pyCSW_custom_GetRecords_Response.xslt</Response>
+              </XSLTransformations>
+          </GetRecords>
+          <GetRecordByID>
+              <RequestKVPs><![CDATA[service=CSW&request=GetRecordById&version=2.0.2&ElementSetName=full&outputschema=http%3A%2F%2Fwww.isotc211.org%2F2005%2Fgmd]]></RequestKVPs>
+              <XSLTransformations>
+                  <Response>CSW_2.0.2_APISO_pyCSW_custom_GetRecordByID_Response.xslt</Response>
+              </XSLTransformations>
+          </GetRecordByID>
+          <SupportSpatialQuery>True</SupportSpatialQuery>
+          <SupportContentTypeQuery>False</SupportContentTypeQuery>
+          <SupportSpatialBoundary>True</SupportSpatialBoundary>
+      </Profile>
+
+      <!-- WCODP Data.gov profile of pycsw by dc:identifier-->
+      <Profile>
+        <ID>urn:ogc:CSW:2.0.2:HTTP:APISO:PYCSW:CHERRYPICK</ID>
+        <Name>pycsw - cherrypick</Name>
+        <CswNamespace>http://www.opengis.net/cat/csw/2.0.2</CswNamespace>
+        <Description/>
+        <GetRecords>
+            <XSLTransformations>
+                <Request>CSW_2.0.2_APISO_pyCSW_cherrypick_GetRecords_Request.xslt</Request>
+                <Response>CSW_2.0.2_APISO_pyCSW_cherrypick_GetRecords_Response.xslt</Response>
+            </XSLTransformations>
+        </GetRecords>
+        <GetRecordByID>
+            <RequestKVPs><![CDATA[service=CSW&request=GetRecordById&version=2.0.2&ElementSetName=full&outputschema=http%3A%2F%2Fwww.isotc211.org%2F2005%2Fgmd]]></RequestKVPs>
+            <XSLTransformations>
+                <Response>CSW_2.0.2_APISO_pyCSW_cherrypick_GetRecordByID_Response.xslt</Response>
+            </XSLTransformations>
+        </GetRecordByID>
+        <SupportSpatialQuery>True</SupportSpatialQuery>
+        <SupportContentTypeQuery>False</SupportContentTypeQuery>
+        <SupportSpatialBoundary>True</SupportSpatialBoundary>
+      </Profile>
+
 </CSWProfiles>
