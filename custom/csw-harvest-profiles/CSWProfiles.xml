@@ -98,6 +98,30 @@
          <SupportSpatialBoundary>True</SupportSpatialBoundary>
       </Profile>
 
+    <!-- WCOA APISO CUSTOM PyCSW -->
+    <Profile>
+    		<ID>urn:ogc:WCOA:CSW:2.0.2:HTTP:APISO:PYCSW</ID>
+    		<Name>[WCOA] PyCSW</Name>
+    		<CswNamespace>http://www.opengis.net/cat/csw/2.0.2</CswNamespace>
+    		<Description/>
+    		<GetRecords>
+    			<XSLTransformations>
+    				<Request>WCOA_CSW_2.0.2_APISO_pycsw_GetRecords_Request.xslt</Request>
+    				<Response>WCOA_CSW_2.0.2_APISO_pycsw_GetRecords_Response.xslt</Response>
+    			</XSLTransformations>
+    		</GetRecords>
+    		<GetRecordByID>
+    			<RequestKVPs><![CDATA[service=CSW&request=GetRecordById&version=2.0.2&ElementSetName=full&outputschema=http%3A%2F%2Fwww.isotc211.org%2F2005%2Fgmd]]></RequestKVPs>
+    			<XSLTransformations>
+    				<Response>WCOA_CSW_2.0.2_APISO_pycsw_GetRecordByID_Response.xslt</Response>
+    			</XSLTransformations>
+    		</GetRecordByID>
+    		<SupportSpatialQuery>True</SupportSpatialQuery>
+    		<SupportContentTypeQuery>False</SupportContentTypeQuery>
+    		<SupportSpatialBoundary>True</SupportSpatialBoundary>
+  	</Profile>
+
+
     <!--  OGCCORE ESRI GPT -->
     <Profile>
         <ID>urn:ogc:CSW:2.0.2:HTTP:OGCCORE:ESRI:GPT</ID>
@@ -550,9 +574,9 @@
         </GetRecords>
         <GetRecordByID>
             <RequestKVPs><![CDATA[request=GetRecordById&service=CSW-ebRIM&elementSetName=full&version=2.0.2&outputSchema=urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0]]></RequestKVPs>
-	<XSLTransformations>
-		<Response>CSW_2.0.2_EBRIM_OWS6_GetRecordByID_Response.xslt</Response>
-	</XSLTransformations>
+          	<XSLTransformations>
+          		<Response>CSW_2.0.2_EBRIM_OWS6_GetRecordByID_Response.xslt</Response>
+          	</XSLTransformations>
          </GetRecordByID>
          <SupportSpatialQuery>False</SupportSpatialQuery>
          <SupportContentTypeQuery>False</SupportContentTypeQuery>
@@ -560,19 +584,19 @@
    </Profile>
 
      <!--  CSW OGCCORE FEMA -->
-     <Profile>
+    <Profile>
 	    <ID>CSW.OGCCORE.FEMA</ID>
-	    <Name>CSW.OGCCORE.FEMA</Name>
-	    <CswNamespace>http://www.opengis.net/cat/csw</CswNamespace>
-	    <Description>CSW OGCCORE FEMA profile</Description>
-	    <!-- same as CSW.CORE.ESRI profile -->
-	    <GetRecords>
-	      <XSLTransformations>
-	        <Request>CSW_CORE_ESRI_GetRecords_Request.xslt</Request>
-            <Response>CSW_CORE_ESRI_GetRecords_Response.xslt</Response>
-	      </XSLTransformations>
-	    </GetRecords>
-	    <GetRecordByID>
+  	    <Name>CSW.OGCCORE.FEMA</Name>
+  	    <CswNamespace>http://www.opengis.net/cat/csw</CswNamespace>
+  	    <Description>CSW OGCCORE FEMA profile</Description>
+  	    <!-- same as CSW.CORE.ESRI profile -->
+  	    <GetRecords>
+  	      <XSLTransformations>
+  	        <Request>CSW_CORE_ESRI_GetRecords_Request.xslt</Request>
+              <Response>CSW_CORE_ESRI_GetRecords_Response.xslt</Response>
+  	      </XSLTransformations>
+  	    </GetRecords>
+  	    <GetRecordByID>
             <!-- HTTP GET request url Key-Value Pairs(KVPs). need to append "&Id=[the ID of the metadata]" to be retrieved before making the GetRecordByID call -->
             <RequestKVPs><![CDATA[service=CSW&request=GetRecordById&version=2.0.0&ElementSetName=full]]></RequestKVPs>
             <XSLTransformations>
@@ -611,25 +635,25 @@
 
 	<!-- Data.gov Profile of pycsw -->
   <Profile>
-		<ID>urn:ogc:CSW:2.0.2:HTTP:APISO:PYCSW</ID>
-		<Name>pycsw</Name>
-		<CswNamespace>http://www.opengis.net/cat/csw/2.0.2</CswNamespace>
-		<Description/>
-		<GetRecords>
-			<XSLTransformations>
-				<Request>CSW_2.0.2_APISO_pycsw_GetRecords_Request.xslt</Request>
-				<Response>CSW_2.0.2_APISO_pycsw_GetRecords_Response.xslt</Response>
-			</XSLTransformations>
-		</GetRecords>
-		<GetRecordByID>
-			<RequestKVPs><![CDATA[service=CSW&request=GetRecordById&version=2.0.2&ElementSetName=full&outputschema=http%3A%2F%2Fwww.isotc211.org%2F2005%2Fgmd]]></RequestKVPs>
-			<XSLTransformations>
-				<Response>CSW_2.0.2_APISO_pycsw_GetRecordByID_Response.xslt</Response>
-			</XSLTransformations>
-		</GetRecordByID>
-		<SupportSpatialQuery>True</SupportSpatialQuery>
-		<SupportContentTypeQuery>False</SupportContentTypeQuery>
-		<SupportSpatialBoundary>True</SupportSpatialBoundary>
+  		<ID>urn:ogc:CSW:2.0.2:HTTP:APISO:PYCSW</ID>
+  		<Name>pycsw</Name>
+  		<CswNamespace>http://www.opengis.net/cat/csw/2.0.2</CswNamespace>
+  		<Description/>
+  		<GetRecords>
+  			<XSLTransformations>
+  				<Request>CSW_2.0.2_APISO_pycsw_GetRecords_Request.xslt</Request>
+  				<Response>CSW_2.0.2_APISO_pycsw_GetRecords_Response.xslt</Response>
+  			</XSLTransformations>
+  		</GetRecords>
+  		<GetRecordByID>
+  			<RequestKVPs><![CDATA[service=CSW&request=GetRecordById&version=2.0.2&ElementSetName=full&outputschema=http%3A%2F%2Fwww.isotc211.org%2F2005%2Fgmd]]></RequestKVPs>
+  			<XSLTransformations>
+  				<Response>CSW_2.0.2_APISO_pycsw_GetRecordByID_Response.xslt</Response>
+  			</XSLTransformations>
+  		</GetRecordByID>
+  		<SupportSpatialQuery>True</SupportSpatialQuery>
+  		<SupportContentTypeQuery>False</SupportContentTypeQuery>
+  		<SupportSpatialBoundary>True</SupportSpatialBoundary>
 	</Profile>
     <!-- profile of USGS Sciencebase -->
     <Profile>
