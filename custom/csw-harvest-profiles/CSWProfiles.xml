@@ -69,7 +69,7 @@
        <SupportSpatialQuery>True</SupportSpatialQuery>
        <SupportContentTypeQuery>True</SupportContentTypeQuery>
        <SupportSpatialBoundary>True</SupportSpatialBoundary>
-    </Profile>
+  </Profile>
 
     <!--  WCOA OGCCORE CUSTOM GeoNetwork -->
     <Profile>
