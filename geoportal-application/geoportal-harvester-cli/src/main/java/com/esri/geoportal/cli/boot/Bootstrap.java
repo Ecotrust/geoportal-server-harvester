@@ -83,6 +83,7 @@ import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 import org.apache.http.impl.client.HttpClients;
 import org.xml.sax.SAXException;
+import com.esri.geoportal.harvester.thredds.ThreddsConnector;
 
 /**
  * Bootstrap.
@@ -96,15 +97,15 @@ public class Bootstrap {
   private OutboundConnectorRegistry outboundConnectorRegistry;
   private InboundConnectorRegistry inboundConnectorRegistry;
   private FilterRegistry filterRegistry;
-  
-  private final BrokerDefinitionManager brokerDefinitionManager = new MemBrokerDefinitionManager();    
+
+  private final BrokerDefinitionManager brokerDefinitionManager = new MemBrokerDefinitionManager();
   private final ReportManager reportManager;
   private final HistoryManager historyManager = new MemHistoryManager();
   private final ProcessManager processManager = new MemProcessManager();
   private final TaskManager taskManager = new MemTaskManager();
   private final TriggerInstanceManager triggerInstanceManager = new MemTriggerInstanceManager();
   private final TriggerManager triggerManager = new MemTriggerManager();
-  
+
   private BrokersService brokerService;
   private ExecutionService executionService;
   private ProcessesService processesService;
@@ -114,7 +115,7 @@ public class Bootstrap {
   private ProfilesService profilesService;
   private final String geometryServiceUrl;
   private final String cswProfilesFolder;
-  
+
   /**
    * Creates instance of the bootstrap.
    * @param geometryServiceUrl Esri geometry service URL
@@ -125,7 +126,7 @@ public class Bootstrap {
     this.cswProfilesFolder = cswProfilesFolder;
     this.reportManager = reportManager;
   }
-  
+
   /**
    * Creates engine.
    * @return engine.
@@ -134,11 +135,11 @@ public class Bootstrap {
   public Engine createEngine() throws DataProcessorException, ParserConfigurationException, SAXException {
     try {
       DefaultEngine engine = new DefaultEngine(
-              createTemplatesService(), 
-              createBrokersService(), 
-              createTasksService(), 
-              createProcessesService(), 
-              createTriggersService(), 
+              createTemplatesService(),
+              createBrokersService(),
+              createTasksService(),
+              createProcessesService(),
+              createTriggersService(),
               createExecutionService());
       processorRegistry.setDefaultProcessor(new DefaultProcessor());
       engine.init();
@@ -147,56 +148,56 @@ public class Bootstrap {
       throw new DataProcessorException("Error creating engine.", ex);
     }
   }
-  
+
   // <editor-fold defaultstate="collapsed" desc="services factories">
   protected BrokersService createBrokersService() throws IOException, TransformerConfigurationException, XPathExpressionException, ParserConfigurationException, SAXException {
     if (brokerService==null) {
       brokerService = new DefaultBrokersService(
-              createInboundConnectorRegistry(), 
-              createOutboundConnectorRegistry(), 
+              createInboundConnectorRegistry(),
+              createOutboundConnectorRegistry(),
               createBrokerDefinitionManager());
     }
     return brokerService;
   }
-  
+
   protected TemplatesService createTemplatesService() throws IOException, TransformerConfigurationException, XPathExpressionException, ParserConfigurationException, SAXException {
     if (templatesService==null) {
       templatesService = new DefaultTemplatesService(
-              createInboundConnectorRegistry(), 
-              createOutboundConnectorRegistry(), 
-              createTransformerRegistry(), 
-              createFilterRegistry(), 
-              createTriggerRegistry(), 
+              createInboundConnectorRegistry(),
+              createOutboundConnectorRegistry(),
+              createTransformerRegistry(),
+              createFilterRegistry(),
+              createTriggerRegistry(),
               createProcessorRegistry());
     }
     return templatesService;
   }
-  
+
   protected TasksService createTasksService() throws IOException, TransformerConfigurationException, XPathExpressionException, ParserConfigurationException, SAXException {
     if (taskService==null) {
       taskService = new DefaultTasksService(
-              createInboundConnectorRegistry(), 
-              createOutboundConnectorRegistry(), 
-              createTransformerRegistry(), 
-              createFilterRegistry(), 
-              createProcessorRegistry(), 
-              createTaskManager(), 
-              createHistoryManager() 
+              createInboundConnectorRegistry(),
+              createOutboundConnectorRegistry(),
+              createTransformerRegistry(),
+              createFilterRegistry(),
+              createProcessorRegistry(),
+              createTaskManager(),
+              createHistoryManager()
       );
     }
     return taskService;
   }
-  
+
   private ProcessesService createProcessesService() {
     if (processesService==null) {
       processesService = new DefaultProcessesService(
-              createProcessManager(), 
-              createReportManager(), 
+              createProcessManager(),
+              createReportManager(),
               createStatisticsRegistry());
     }
     return processesService;
   }
-  
+
   protected ExecutionService createExecutionService() throws IOException, TransformerConfigurationException, XPathExpressionException, ParserConfigurationException, SAXException {
     if (executionService==null) {
       executionService = new DefaultExecutionService(
@@ -206,50 +207,50 @@ public class Bootstrap {
     }
     return executionService;
   }
-  
+
   protected TriggersService createTriggersService() throws IOException, TransformerConfigurationException, XPathExpressionException, ParserConfigurationException, SAXException {
     if (triggersService==null) {
       triggersService = new DefaultTriggersService(
-              createTriggerRegistry(), 
-              createTriggerManager(), 
-              createHistoryManager(), 
-              createTriggerInstanceManager(), 
+              createTriggerRegistry(),
+              createTriggerManager(),
+              createHistoryManager(),
+              createTriggerInstanceManager(),
               createExecutionService());
     }
     return triggersService;
   }
   // </editor-fold>
-  
+
   // <editor-fold defaultstate="collapsed" desc="managers factories">
   protected BrokerDefinitionManager createBrokerDefinitionManager() {
     return brokerDefinitionManager;
   }
-  
+
   protected HistoryManager createHistoryManager() {
     return historyManager;
   }
-  
+
   protected ReportManager createReportManager() {
     return reportManager;
   }
-  
+
   protected ProcessManager createProcessManager() {
     return processManager;
   }
-  
+
   protected TaskManager createTaskManager() {
     return taskManager;
   }
-  
+
   protected TriggerInstanceManager createTriggerInstanceManager() {
     return triggerInstanceManager;
   }
-  
+
   protected TriggerManager createTriggerManager() {
     return triggerManager;
   }
   // </editor-fold>
-  
+
   // <editor-fold defaultstate="collapsed" desc="registries factories">
   protected FilterRegistry createFilterRegistry() {
     if (filterRegistry==null) {
@@ -257,10 +258,10 @@ public class Bootstrap {
 
       filterRegistry.put(RegExFilter.TYPE, new RegExFilter());
     }
-    
+
     return filterRegistry;
   }
-  
+
   protected InboundConnectorRegistry createInboundConnectorRegistry() throws IOException, TransformerConfigurationException, ParserConfigurationException, SAXException, XPathExpressionException {
     if (inboundConnectorRegistry==null) {
       inboundConnectorRegistry = new InboundConnectorRegistry();
@@ -282,20 +283,21 @@ public class Bootstrap {
       inboundConnectorRegistry.put(OaiConnector.TYPE, new OaiConnector());
       inboundConnectorRegistry.put(JdbcConnector.TYPE, new JdbcConnector(true));
       inboundConnectorRegistry.put(DcatConnector.TYPE, new DcatConnector(metaBuilder));
+      inboundConnectorRegistry.put(ThreddsConnector.TYPE, new ThreddsConnector());
     }
-    
+
     return inboundConnectorRegistry;
   }
-  
+
   protected OutboundConnectorRegistry createOutboundConnectorRegistry() throws IOException, TransformerConfigurationException, XPathExpressionException {
     if (outboundConnectorRegistry==null) {
       outboundConnectorRegistry = new OutboundConnectorRegistry();
 
       MetaAnalyzer metaAnalyzer = new MultiMetaAnalyzerWrapper(
-              new SimpleDcMetaAnalyzer(), 
-              new SimpleFgdcMetaAnalyzer(), 
-              new SimpleIso15115MetaAnalyzer(), 
-              new SimpleIso15115_2MetaAnalyzer(), 
+              new SimpleDcMetaAnalyzer(),
+              new SimpleFgdcMetaAnalyzer(),
+              new SimpleIso15115MetaAnalyzer(),
+              new SimpleIso15115_2MetaAnalyzer(),
               new SimpleIso15119MetaAnalyzer());
 
       outboundConnectorRegistry.put(AgpOutputConnector.TYPE, new AgpOutputConnector(metaAnalyzer, geometryServiceUrl));
@@ -303,35 +305,35 @@ public class Bootstrap {
       outboundConnectorRegistry.put(FolderConnector.TYPE, new FolderConnector());
       outboundConnectorRegistry.put(com.esri.geoportal.harvester.gpt.GptConnector.TYPE, new com.esri.geoportal.harvester.gpt.GptConnector(geometryServiceUrl));
     }
-    
+
     return outboundConnectorRegistry;
   }
-  
+
   protected ProcessorRegistry createProcessorRegistry() {
     if (processorRegistry==null) {
       processorRegistry = new MemProcessorRegistry();
     }
-    
+
     return processorRegistry;
   }
-  
+
   protected StatisticsRegistry createStatisticsRegistry() {
     if (statisticsRegistry==null) {
       statisticsRegistry = new StatisticsRegistry();
     }
     return statisticsRegistry;
   }
-  
+
   protected TransformerRegistry createTransformerRegistry() {
     if (transformerRegistry==null) {
       transformerRegistry = new TransformerRegistry();
 
       transformerRegistry.put(XsltTransformer.TYPE, new XsltTransformer());
     }
-    
+
     return transformerRegistry;
   }
-  
+
   protected TriggerRegistry createTriggerRegistry() {
     if (triggerRegistry==null) {
       triggerRegistry = new TriggerRegistry();
@@ -340,7 +342,7 @@ public class Bootstrap {
       triggerRegistry.put(AtTrigger.TYPE, new AtTrigger());
       triggerRegistry.put(PeriodTrigger.TYPE, new PeriodTrigger());
     }
-    
+
     return triggerRegistry;
   }
   // </editor-fold>
