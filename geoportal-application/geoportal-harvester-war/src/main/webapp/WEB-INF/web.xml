@@ -28,7 +28,21 @@
     <dispatcher>ERROR</dispatcher>
     <dispatcher>REQUEST</dispatcher>
   </filter-mapping-->
-  
+
+  <security-constraint>
+	  <web-resource-collection>
+		  <url-pattern>/*</url-pattern>
+	  </web-resource-collection>
+	  <auth-constraint>
+		  <role-name>geoportal</role-name>
+	  </auth-constraint>
+  </security-constraint>
+
+  <login-config>
+	  <auth-method>BASIC</auth-method>
+	  <realm-name>Harvester</realm-name>
+  </login-config>
+
   <session-config>
     <session-timeout>
       30
